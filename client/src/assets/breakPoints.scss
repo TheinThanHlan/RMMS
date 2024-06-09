@@ -1,0 +1,10 @@
+$smallScreen:0in;
+$midScreen:10in;
+$largeScreen:15in;
+
+
+@mixin mediaQuery($breakPoint){
+  @media(min-width:$breakPoint){
+    @content
+  }
+}

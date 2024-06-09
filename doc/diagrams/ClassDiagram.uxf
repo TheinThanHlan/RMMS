@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>216</y>
+      <w>7464</w>
+      <h>4680</h>
+    </coordinates>
+    <panel_attributes>RMMS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>6648</x>
+      <y>4224</y>
+      <w>312</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Service</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>344</x>
+      <y>4528</y>
+      <w>336</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>controller</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>8</x>
+      <y>272</y>
+      <w>4904</w>
+      <h>3144</h>
+    </coordinates>
+    <panel_attributes>bean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>5832</x>
+      <y>608</y>
+      <w>496</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>Repository</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>536</x>
+      <y>472</y>
+      <w>168</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Address
+--
+-id:long
+-country
+-cityOrState
+-town
+-townShip
+-road
+-street
+-address</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>544</y>
+      <w>96</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>768</x>
+      <y>736</y>
+      <w>168</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>Task
+--
+-id:long
+-name: string
+-pages:java.utils.List&lt;Page&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>232</x>
+      <y>736</y>
+      <w>168</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>UserRole
+--
+-id:long
+-name: string
+-authority:Authority
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>736</y>
+      <w>168</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Authority
+--
+-id:long
+-name: string
+-tasks:java.utils.List&lt;Taks&gt;
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>304</x>
+      <y>656</y>
+      <w>48</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>768</x>
+      <y>480</y>
+      <w>168</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Page
+--
+-id:long
+-name: string
+-accessable
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>832</x>
+      <y>624</y>
+      <w>48</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..*</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>664</x>
+      <y>792</y>
+      <w>120</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>792</y>
+      <w>128</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>208</x>
+      <y>272</y>
+      <w>216</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>Restaurant
+--
+-id :long
+-name:String
+-phone:java.util.List&lt;String&gt;
+-email:java.util.List&lt;String&gt;
+-address:dao.Address
+-createdDate:java.sql.Date
+-users:java.util.List&lt;bean.User&gt;
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>232</x>
+      <y>472</y>
+      <w>232</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>User
+--
+-id:long
+-name: string
+-age:short
+-marsta:boolean
+-birthDate:java.sql.Date
+-email: string
+-phone: string
+-uid:string
+-password:string
+-address:java.utils.List&lt;Address&gt;
+-userRole:dao.UserRole
+-createdDate:java.sql.Date
+-restaurant:bean.Restaurant</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>400</y>
+      <w>48</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>416</x>
+      <y>336</y>
+      <w>200</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0;230.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>296</y>
+      <w>168</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>ItemType
+--
+-id:long
+-name:String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1568</x>
+      <y>504</y>
+      <w>168</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>StockRecord
+--
+-id:long
+-datetime:java.sql.Timestamp
+-price:long
+-
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1152</x>
+      <y>312</y>
+      <w>168</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Item
+--
+-id:long
+-name:String
+-type:ItemType
+-currentPrice:long
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,40 @@
+<div id="section-to-print">
+
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope=" col">Name</th>
+        <th scope="col">No.</th>
+        <th scope="col ">Price</th>
+        <th scope="col "></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(menuOrder of filterMenuOrder();track menuOrder;){
+      <tr>
+        <th>{{$index}}</th>
+        <th cope="row">{{menuOrder.menu.menuTemplate.name}} {{menuOrder.menu.menuSize.name}}</th>
+        <td class="text-end">{{countMenuOrder(menuOrder.menu.id,menuOrder.orderType.id)}}</td>
+        <td class="text-end">{{menuOrder.menu!.menuPrices[0]!.price }} </td>
+        <td class="text-end">{{menuOrder.menu!.menuPrices[0]!.price *
+          countMenuOrder(menuOrder.menu.id,menuOrder.orderType.id)}}
+        </td>
+      </tr>
+      }
+      <tr>
+        <th cope="row" colspan="3" class="text-end">Total</th>
+        <td class="text-end">{{getTotal()}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!--
+<div class="container-fluid total">
+  <div class="row">
+    <div class="col h1">Total : </div>
+    <div class="col h1">{{getTotal()}}</div>
+  </div>
+</div>
+-->

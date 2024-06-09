@@ -1,0 +1,71 @@
+3rd
+
+Restaurant
+	name,email,address,phone,manager
+
+Table
+	name,restaurant,maxServeCustomer
+User
+	name,email,phone,address,marsta,userName,password,UserGroup,loginableStatus
+Marsta
+	name
+Gender
+	name
+Marsta
+	status
+Employee
+	user
+Customer
+	user
+Delivery
+	user,deliveryMethod
+DeliveryMethod
+	name
+
+StockSupplier
+	user
+
+UserGroup
+	name,authority
+Authority
+	name,restaurant,pages
+Page
+	name
+MenuTemplate
+	name
+Menu
+	menuTemplate,menuSize,cookDuration
+MenuPrice
+	restaurant,menu,price
+
+MenuSize
+	name
+OrderType
+	name,guiColor
+OrderStatus
+	name,guiColor
+Order
+	menu,orderType,orderStatus,cookStartTime,cookEndTime,orderedDateTime,dueDateTime,voucher
+
+Voucher
+	date,table
+
+Stock
+	name,stockSupplyer
+StockOrder
+	stock,dateTime,orderedEmployee,orderedQty,recievedEmployee,stockOrderStatus,recievedQty
+StockOrderStatus
+	name,guiColor
+
+0-----------in picture^
+task
+	description,createdDate,dueDate,employeeGroup,Employee,schedule,poriorityLevel
+
+
+Accounts
+	name,number,normal
+
+
+Transactions
+	date,amount,account,direction,description,reciever,payer,voucher,StockOrder
+

@@ -1,0 +1,186 @@
+@if(isDataLoaded==true){
+<nav class="navbar bg-body-tertiary bg-light" style="max-height:10%;min-height:10%;overflow:hidden;">
+  <div class="container-fluid text-right">
+    <div class="row">
+
+
+      <h2 class="col navbar-brand user-select-none">Voucher No. :
+        {{voucherVars.getVouchers()!.get(voucherNumber)!.id}}
+      </h2>
+      <h2 class="col navbar-brand user-select-none">Table No. :
+        {{voucherVars.getVouchers()!.get(voucherNumber)!.table_.id}}</h2>
+      <h2 class="col navbar-brand user-select-none">Total : {{getTotal() || "--" }} </h2>
+      <!--
+      <h2 class="col navbar-brand user-select-none">Number of orders : {{undefined || "--" }} </h2>
+      -->
+    </div>
+  </div>
+  <!--
+  <div class="container-fluid text-right justify-content-between align-items-middle">
+    <app-add-something-new [data]="add_order_modal_data" (save)="addOrder()" (close)="resetAllData()">
+      <div class="mb-3">
+        <label for="select_menu_category">Select category</label>
+        <select [(ngModel)]="choosedCategory" class="form-select form-select-md mb-2" id="select_menu_category">
+          <option [ngValue]="newCategoryObject">Show all</option>
+          @for(category of vars.getMenuCategories().values();track category){
+          <option [ngValue]="category">{{category.name}}</option>
+          }
+        </select>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="select_menu_template">Select menu</label>
+        <select [(ngModel)]="choosedMenu.menuTemplate" class="form-select form-select-md mb-2"
+          id="select_menu_template">
+          <option [ngValue]="newMenuTemplateObject">--choose--</option>
+          @for(a of filterMenus();track a){
+          <option [ngValue]="a">{{a.menuTemplate.name}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="menuSize">Size</label>
+        <select [(ngModel)]="choosedMenu.menuSize" class="form-select form-select-md mb-2" id="menuSize">
+          @for( menuSize of filterMenuSizeAddMenu();track menuSize){
+          <option [ngValue]="menuSize">{{menuSize.name}}</option>
+          }
+        </select>
+      </div>
+    </app-add-something-new>
+  </div>
+  -->
+</nav>
+<div class="mx-1 order-body">
+  <div class="card choose-menu-part">
+    <div class="row-1 my-2  d-flex">
+      <div class="col mx-2">
+        <select [(ngModel)]="choosedCategory" class="form-select form-select-md mb-2" id="select_menu_category">
+          <option [ngValue]="newCategoryObject">Show all category</option>
+          @for(category of vars.getMenuCategories().values();track category){
+          <option [ngValue]="category">{{category.name}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="col mx-2 ">
+        <select [(ngModel)]="choosedOrderType" class="form-select form-select-md mb-2" id="select_order_type">
+          @for(a of vars.getOrderTypes().values();track a){
+          <option [ngValue]="a">{{a.name}}</option>
+          }
+        </select>
+      </div>
+
+
+      <div class="col mx-2 ms-auto" role="search">
+        <input [(ngModel)]="filterMenu_Name" class="form-control me-2" type="search" placeholder="Search"
+          aria-label="Search">
+        <!--
+      <button class="btn btn-primary me-2" (click)="filterTable_()" type="submit">Search</button>
+      -->
+      </div>
+
+
+
+    </div>
+    <div class="row-2">
+      <div class="text-info" *ngIf="filterMenu_Name!=''">Filtered Result</div>
+      <table class="table" id="table_Table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(menu of filterMenu();track menu;){
+          <tr>
+            <th cope="row">{{menu.menuTemplate.name}}</th>
+            <td>{{menu.menuSize.name}} </td>
+            <td>{{menu!.menuPrices[0]!.price }} </td>
+            <td>
+
+              <button (click)="addOrder(menu)" class="btn btn-primary " role="button">
+                Choose
+              </button>
+
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card voucher-table-part ">
+    <div class="row-1 my-2 d-flex justify-content-end ">
+      <div class="col-4 mx-2 ms-auto">
+        <button (click)="closeVoucher()" class="btn btn-primary " role="button">
+          Close voucher
+        </button>
+      </div>
+      <div class="col-4 mx-2 ms-auto" role="search">
+        <input [(ngModel)]="filterMenu_Name_Voucher" class="form-control me-2" type="search" placeholder="Search"
+          aria-label="Search">
+        <!--
+      <button class="btn btn-primary me-2" (click)="filterTable_()" type="submit">Search</button>
+      -->
+      </div>
+    </div>
+    <div class="row-2">
+
+      <div class="text-info " *ngIf="filterMenu_Name_Voucher!=''">Filtered Result</div>
+      <table class="table" id="section-to-print">
+        <thead>
+          <tr>
+            <th scope=" col">Name</th>
+            <th scope="col">Size</th>
+            <th class="col" scope="col">Type</th>
+            <th clas="col" scope="col"></th>
+            <th scope="col">No.</th>
+            <th class="col" scope="col"></th>
+            <th scope="col">Price</th>
+            <th scope="col">No. x Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(menuOrder of filterMenuOrder();track menuOrder; ){
+          <tr>
+            <th cope="row">{{menuOrder.menu.menuTemplate.name}}</th>
+            <td>{{menuOrder.menu.menuSize.name}} </td>
+            <td>{{menuOrder.orderType.name}} </td>
+            <td>
+              <button class="btn btn-outline-danger" (click)="decreaseMenuOrder(menuOrder)">-1</button>
+            </td>
+            <td>{{countMenuOrder(menuOrder.menu.id,menuOrder.orderType.id)}}</td>
+            <td>
+              <button (click)="increaseMenuOrder(menuOrder)" class="btn btn-outline-success">+1</button>
+            </td>
+            <td>{{menuOrder.menu!.menuPrices[0]!.price }} </td>
+            <td>{{menuOrder.menu!.menuPrices[0]!.price * countMenuOrder(menuOrder.menu.id,menuOrder.orderType.id)}}
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <!--
+    <div class="footer">
+
+    </div>
+    -->
+  </div>
+</div>
+}
+
+
+
+
+
+@else{
+<div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+}

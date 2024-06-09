@@ -1,0 +1,68 @@
+<nav class="navbar bg-body-tertiary bg-light">
+  <div class="container-fluid text-right justify-content-between">
+    <h1 class="navbar-brand user-select-none">Tables</h1>
+
+    <app-add-something-new (close)="resetAllData()" (save)="addTable()" [data]="add_table_modal_data">
+      <div class="d-flex">
+        <div class="input-group mb-3 mx-3">
+          Table name
+        </div>
+        <div class="input-group mb-3">
+          Maximum customer
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="input-group mb-3 mx-3">
+          <input type="text" class="form-control" [(ngModel)]="tmp_table.name" placeholder="Table name">
+          <div class="input-group-append">
+            <button (click)="tmp_table.name=''" class="btn btn-outline-danger" type="button">Clear</button>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" [(ngModel)]="tmp_table.maxServeCustomer" placeholder="Max customer">
+          <div class="input-group-append">
+            <button (click)="tmp_table.maxServeCustomer=1" class="btn btn-outline-danger" type="button">Clear</button>
+          </div>
+        </div>
+      </div>
+    </app-add-something-new>
+
+
+
+
+
+
+
+
+
+
+    <div class="d-flex ms-auto" role="search">
+      <input [(ngModel)]="filterTable_Name" class="form-control me-2" maxLength='5' type="search" placeholder="Search"
+        aria-label="Search">
+      <!--
+      <button class="btn btn-primary me-2" (click)="filterTable_()" type="submit">Search</button>
+      -->
+    </div>
+  </div>
+</nav>
+<div class="text-info" *ngIf="filterTable_Name!=''">Filtered Result</div>
+<table class="table" id="table_Table">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Chairs</th>
+      <th scope="col" style="width:30px"></th>
+      <th scope="col" style="width:30px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(table_ of filterTable_s();track table_;){
+    <tr>
+      <th cope="row">{{table_.name}}</th>
+      <td>{{table_.maxServeCustomer}} </td>
+      <td><button (click)="edit()" class="btn btn-primary">Edit </button></td>
+      <td><button (click)="delete(table_.id)" class="btn btn-danger"> Delete</button></td>
+    </tr>
+    }
+  </tbody>
+</table>

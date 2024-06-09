@@ -1,0 +1,61 @@
+<nav class="navbar bg-body-tertiary bg-light">
+  <div class="container-fluid text-right justify-content-start">
+    <h1 class="navbar-brand user-select-none">Sales</h1>
+    <app-add-something-new [data]="add_voucher_model_data" (save)="addVoucher()" (close)="resetAllData()">
+      <div class="mb-3">
+        <mat-form-field style="width:100%">
+          <mat-label>Choose table</mat-label>
+          <mat-select [(value)]="voucher_table">
+            @for(table_ of sortTableByVoucher();track table_){
+            <mat-option [value]="table_">
+              <!--
+              <span class="badge me-5" [class]="table_.state.guiClasses">
+                {{table_.state.name}}
+              </span>&nbsp;&nbsp;&nbsp;&nbsp;
+              -->
+              {{table_.name}}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <!--
+        <label for=" openVoucher">Menu name</label>
+                  <select class="form-select form-select-md mb-2" id="openVoucher">
+                    @for(table_ of sortTableByState();track table_){
+                    <option [ngValue]="table_">
+                      <div>
+                        {{table_.name}}<span [class]="table_.state.guiClasses"
+                          class="badge">{{table_.state.name}}</span>
+                      </div>
+                    </option>
+                    }
+                  </select>
+                  -->
+      </div>
+    </app-add-something-new>
+  </div>
+</nav>
+
+
+<table class="table" id="table_Table">
+  <thead>
+    <tr>
+      <th scope="col">Table No.</th>
+      <th scope="col">Voucher No.</th>
+      <th scope="col">Status</th>
+      <th scope="col" style="width:30px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(a of sortVoucherByTable();track a){
+    <tr>
+      <th cope="row" class="h3">{{a.table_.name}}</th>
+      <th class="h5">{{a.id}}</th>
+      <td class="text-success" [class]="a.state.guiClasses">{{a.state.name}} </td>
+      <td><a href="#" class="btn btn-primary"
+          [routerLink]="[{ 'outlets': { salesOutlet: [ 'salesDetail' , {'id':a.id }]} }]">Detail</a></td>
+    </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,144 @@
+1st 
+
+Accounts
+	name,number,normal#1 or -1
+
+
+Transactions
+	date,amount,account,direction,description,reciever,payer
+
+Voucher
+	restaurant 
+		name,email,address,phone,open_time,closeime,manager
+	Table
+		tableNo,tableSeatingCapacity,
+	Customer
+		name,email,phone,address,marsta,userName,password
+	Employee
+		name,email,phone,address,marsta,userName,password,salary
+			EmployeeGroup
+				groupName,authority
+	Order
+		name,price,size,orderedDateTime,type,cookStartTime,cookEndTime,registeredDateTime,dueDateTime
+	
+
+stock
+	name,createdDate
+	Order
+		dateTime,orderedEmployee,qty
+	
+	in 
+		dateTime,qty,price,recieveEmployee
+	
+	out
+		dateTime,qty,price
+	
+task
+	description,createdDate,dueDate,employeeGroup,type,poriorityLevel
+
+#############################################################################################
+2nd
+
+Restaurant
+	name,email,address,phone,openTime,closeTime,manager
+
+Employee
+	name,email,phone,address,marsta,userName,password,salary,group
+
+EmployeeGroup
+	groupName,authority
+
+Authority
+	name,pages
+
+Page
+	name
+
+Customer
+	name,email,phone,address,marsta,userName,password,group
+
+CustomerGroup
+	groupName,authority
+
+StockProvider
+	name,email,phone,address,userName,password,group
+	
+CustomerGroup
+	groupName,authority
+
+Menu
+	name,size,cookDuration,menuPrices
+
+MenuPrice
+	price,dateTime
+
+
+OrderType
+	name
+
+Order
+	menu,orderType,orderedDateTime,cookStartTime,cookEndTime,registeredDateTime,dueDateTime
+Stock
+	name,createdDate,type
+
+StockType
+	name,useEmployeeGroup
+
+StockOrder
+	stock,dateTime,orderedEmployee,qty
+
+StockIn 
+	stock,dateTime,qty,price,recieveEmployee
+
+out
+	stock,dateTime,qty,price
+	
+task
+	description,createdDate,dueDate,employeeGroup,Employee,type,poriorityLevel
+
+##########################################################################################
+3rd
+
+Restaurant
+	name,email,address,phone,openTime,closeTime,manager
+User
+	name,email,phone,address,marsta,userName,password,userType
+UserType
+	name
+Employee
+	user,salary,group
+Customer
+	user,group
+StockProvider
+	user,group,stock
+Delivery
+	user,group,maxItem
+Group
+	groupName,authority
+Authority
+	name,pages
+Page
+	name
+Menu
+	name,size,cookDuration,menuPrices
+MenuPrice
+	price,dateTime
+OrderType
+	name
+Order
+	menu,orderType,orderedDateTime,cookStartTime,cookEndTime,orderedDateTime,dueDateTime
+Stock
+	name,createdDate,type
+StockType
+	name,useEmployeeGroup
+StockOrder
+	stock,dateTime,orderedEmployee,qty
+StockIn 
+	stock,dateTime,qty,price,recieveEmployee
+
+CurrentStock
+	stock,dateTime,qty
+
+task
+	description,createdDate,dueDate,employeeGroup,Employee,type,poriorityLevel
+

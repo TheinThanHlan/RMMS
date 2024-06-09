@@ -1,0 +1,36 @@
+<div id="top-div">
+  <div id="side-bar" [style]="{'display':sideBarOpened?'inline-block':'none','opacity':sideBarOpened?1:0}">
+    @for(subPage of this.route_dict.get(vars.getUser()!.userGroup.name)!.children!.at(1)!.children;track subPage){
+    @if(subPage.path!=""){
+    <mat-list>
+      <mat-list-item>
+        <button mat-button [routerLink]="[{ 'outlets': { homeOutlet: [ subPage.path ]} }]" [color]="router.url== router.parseUrl(vars.getUser()!.userGroup.name + '/home/(homeOutlet:'+ subPage.path + ')').toString()
+          ?'primary':''" style="text-align:left;width:100%;border:0;margin:0;">
+          {{subPage.path | titlecase}}
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    }
+    }
+  </div>
+  <div>
+    <button mat-icon-fab aria-label="Side bar button" class="btn btn-outline-secondary" (click)="toggleSideBar()"
+      id="toggleSideBarButton">
+      Menu
+      <!--
+      <mat-icon>menu</mat-icon>
+      -->
+    </button>
+  </div>
+  <div id="main-content">
+    @if(isDataLoaded){
+    <router-outlet name="homeOutlet"></router-outlet>
+    }
+    @else{
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    }
+  </div>
+</div>

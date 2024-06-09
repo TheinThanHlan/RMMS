@@ -1,0 +1,85 @@
+@import '../../../assets/breakPoints';
+
+#side-bar {
+  transition: opacity 1s ease-out;
+  opacity: 0;
+
+  @include mediaQuery($smallScreen) {
+    width: 100%;
+    height: auto;
+    max-height: 4in;
+
+  }
+
+  @include mediaQuery($midScreen) {
+    display: block;
+    width: 2.5in;
+    min-height: 100%;
+    max-height: auto;
+    border-right: 1px solid black;
+  }
+}
+
+#main-content {
+  @include mediaQuery($smallScreen) {
+    width: 100%;
+    height: 100vh;
+  }
+
+  @include mediaQuery($midScreen) {
+    width: 100%;
+    height: 100vh;
+  }
+
+  margin:0;
+  padding:0;
+  overflow-y:scroll;
+}
+
+
+
+
+
+
+
+
+
+#top-div {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+
+  @include mediaQuery($smallScreen) {
+    display: block;
+
+  }
+
+  @include mediaQuery($midScreen) {
+    display: flex;
+    align-items: stretch;
+
+  }
+}
+
+
+
+
+
+#top-div>* {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+
+#toggleSideBarButton {
+  @include mediaQuery($smallScreen) {
+    display: block;
+    width: 100%;
+  }
+
+  @include mediaQuery($midScreen) {
+    display: none;
+  }
+
+}

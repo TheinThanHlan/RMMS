@@ -1,0 +1,26 @@
+<!-- Button trigger modal -->
+<div class="mx-2 my-2">
+  <button type="button" class="btn btn-primary " style="" (click)="showModal()" data-bs-target="#exampleModal">
+    {{data.name}}
+  </button>
+</div>
+
+<!-- Modal -->
+<div tabindex="-1" class="modal fade show z-3 " role="dialog" aria-modal="true" style="display:block;"
+  *ngIf="data.show==true || data.ERROR_MESSAGE!=''">
+  <div class="modal-dialog add-something-new">
+    <div class="modal-content add-something-new">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{data.name}}</h1>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="data.ERROR_MESSAGE!=''" class="text-danger">{{data.ERROR_MESSAGE}}</div>
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="hideModal()">{{data.cancel}}</button>
+        <button type="button" class="btn btn-primary" (click)="emitSave()">{{data.ok}}</button>
+      </div>
+    </div>
+  </div>
+</div>
